@@ -9,6 +9,10 @@ const FiltersScreen = (pops) => {
   );
 };
 
+FiltersScreen.navigationOptions = {
+  headerTitle: 'Filter'
+}
+
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
