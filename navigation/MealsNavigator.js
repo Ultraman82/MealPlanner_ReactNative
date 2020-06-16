@@ -14,6 +14,15 @@ import FavoriteScreen from '../screens/FavoritesScreen'
 
 import Colors from "../constants/Colors";
 
+
+const defaultStackNavOptions = {
+  headerStyle: {
+    backgroundColor:
+      Platform.OS === "android" ? Colors.primaryColor : "white",
+  },
+  headerTintColor:
+    Platform.OS === "android" ? "white" : Colors.primaryColor,
+}
 const MealsNavigator = createStackNavigator(
   {
     Categories: {
@@ -26,16 +35,17 @@ const MealsNavigator = createStackNavigator(
   },
   {
     //initialRouteName:
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor:
-          Platform.OS === "android" ? Colors.primaryColor : "white",
-      },
-      headerTintColor:
-        Platform.OS === "android" ? "white" : Colors.primaryColor,
-    },
+    defaultNavigationOptions: defaultStackNavOptions
   }
 );
+
+const FavNavigator = createStackNavigator({
+  Favorites: FavoriteScreen,
+  MealDetail: MealDetailScreen
+}, { //initialRouteName:
+  defaultNavigationOptions:
+    defaultStackNavOptions
+});
 
 const tabSccreenConfig = {
   Meals: {
@@ -46,7 +56,7 @@ const tabSccreenConfig = {
     }
   },
   Favorites: {
-    screen: FavoriteScreen, navigationOptions: {
+    screen: FavNavigator, navigationOptions: {
       // tabBarLabel: "Favorite!!",
       tabBarIcon: (tabInfo) => {
         return <Ionicons name='ios-star' size={25} color={tabInfo.tintColor} />
