@@ -35,13 +35,6 @@ MealDetailScreen.navigationOptions = (navigationData) => {
             console.log("Mark as favoriddddte");
           }}
         />
-        <Item
-          title="unFavorite"
-          iconName="ios-star-outline"
-          onPress={() => {
-            console.log("Mark as favoriddddte");
-          }}
-        />
       </HeaderButtons>
     ),
   };
